@@ -6,12 +6,12 @@ class Square:
     """Represent a square"""
 
     def __init__(self, size=0):
-        """Initialize the atrribute: size"""
+        """ Initialize the attribute : size"""
         self.size = size
 
     """Getter"""
     @property
-    def size(size):
+    def size(self):
         return (self.__size)
 
     """Setter"""
@@ -20,10 +20,10 @@ class Square:
         if type(value) != int:
             raise TypeError("size must be an integer")
         elif value < 0:
-            raise ValueErroe("size must >= 0")
+            raise ValueError("size must be >= 0")
         self.__size = value
 
-    """Create public instance method"""
+    """Create public instance method: def area(self)"""
     def area(self):
-        s_area = self.__size ** 2
-        return (s_area)
+        sq_area = self.__size ** 2
+        return (sq_area)
