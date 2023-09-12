@@ -5,5 +5,5 @@
 def read_file(filename=""):
     """Write a function that reads a text file, prints to stdout"""
     with open(filename) as f:
-        contents = f.read()
-        print(content, end="")
+        for content in f:
+            print(content, end="")
