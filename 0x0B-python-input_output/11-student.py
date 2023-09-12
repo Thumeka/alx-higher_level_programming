@@ -30,4 +30,4 @@ class Student:
             return
         attrs_dict = self.__dict__
         for attr in attrs_dict:
-            attrs_dict[attr] = json[attr]i 
+            attrs_dict[attr] = json[attr] 
