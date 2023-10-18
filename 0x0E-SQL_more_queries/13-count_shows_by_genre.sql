@@ -10,4 +10,5 @@
 LEFT JOIN tv_show_genres AS tsg
         ON tg.id = tsg.genre_id
   GROUP BY genre
+	HAVING number_shows > 0
   ORDER BY number_shows DESC;
