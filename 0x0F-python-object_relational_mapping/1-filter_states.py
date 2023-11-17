@@ -1,21 +1,17 @@
 #!/usr/bin/python3
-"""Write a script that lists all states with a name starting with N 
-(upper N) from the database hbtn_0e_0_usa"""
+""" lists all states with a name starting with N from the hbtn_0e_0_usa:
+"""
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    cur = None
-    try:
-        db = MySQLdb.connect(host='localhost', port=3306,
-                             user=argv[1], passwd=argv[2], db=argv[3])
-        cur = db.cursor()
-        cur.execute("SELECT * FROM states WHERE name COLLATE utf8mb4_general_ci LIKE 'N%' ORDER BY id ASC")
-        [print(state) for state in cur.fetchall()]
-    except MySQLdb.Error as e:
-        print("Error:", e)
-    finally:
-        if cur is not None:
-            cur.close()
-        if 'db' in locals():
-            db.close()
+    db = MySQLdb.connect(host='localhost', port=3306,
+                         user=argv[1], passwd=argv[2], db=argv[3])
+    cur = db.cursor()
+    cur.execute("SELECT * \
+    FROM states \
+    WHERE name like BINARY 'N%' \
+    ORDER BY id ASC")
+    [print(state) for state in cur.fetchall()]
+    cur.close()
+    db.close()
