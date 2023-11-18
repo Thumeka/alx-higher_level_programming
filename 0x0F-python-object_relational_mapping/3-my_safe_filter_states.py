@@ -18,10 +18,8 @@ if __name__ == "__main__":
     cursor = db.cursor()
     query = """SELECT *
                  FROM states
-                 WHERE name LIKE '{:s}' ORDER BY id ASC"""
+                 WHERE name LIKE %s ORDER BY id ASC"""
     state_name = argv[4]
     cursor.execute(query, (state_name,))
     for row in cursor.fetchall():
             print(row)
-    cursor.close()
-    db.close()
